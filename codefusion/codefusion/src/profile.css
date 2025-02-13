@@ -1,0 +1,84 @@
+/* Profile.css */
+body {
+    background-color: #121212; /* Dark background color */
+    color: #e0e0e0; /* Light text color for better contrast on dark background */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #1f1f1f; /* Slightly lighter dark background for the main container */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    color: #ffffff; /* White color for the heading */
+    margin-bottom: 20px;
+}
+
+.profile-section {
+    background: #2c2c2c; /* Darker background for individual sections */
+    border: 1px solid #444; /* Slightly lighter border */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-section h2 {
+    color: #1e90ff; /* Bright color for section headings */
+    margin-bottom: 15px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 60%;
+    border: 1px solid #555; /* Lighter border color */
+    border-radius: 4px;
+    background-color: #333; /* Dark background for input fields */
+    color: #e0e0e0; /* Light text color for input fields */
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #ff4d4d; /* Bright red for error messages */
+    margin-top: 10px;
+}
+
+.result-message {
+    color: #e0e0e0; /* Light color for result messages */
+    font-size: 18px;
+    margin-top: 10px;
+}
