@@ -3,11 +3,11 @@ const express = require('express');
 const puppeteer = require('puppeteer');
 const cors = require('cors');
 
-const port = process.env.PORT || 5001;
+const geekrouter = express.Router();
 const app = express();
 app.use(cors());
 
-app.get('/:username/solved', async (req, res) => {
+geekrouter.get('/:username/solved', async (req, res) => {
     const { username } = req.params;
     console.log({ username });
     console.log("fetching data" ,{username});
@@ -40,10 +40,10 @@ app.get('/:username/solved', async (req, res) => {
 
             levelElements.forEach(element => {
                 const text = element.querySelector('.problemNavbar_head_nav--text__UaGCx').innerText;
-                const match = text.match(/\((\d+)\)/); // Extract the number in parentheses
+                const match = text.match(/\((\d+)\)/); 
                 if (match) {
                     const count = parseInt(match[1], 10);
-                    const category = text.split(' ')[0]; // Extract the category (e.g., SCHOOL, BASIC, EASY)
+                    const category = text.split(' ')[0];
                     levels.push({ category, count });
                 }
             });
@@ -54,7 +54,7 @@ app.get('/:username/solved', async (req, res) => {
         console.log('Solved Elements:', solvedElements);
         console.log('Difficulty Levels:', difficultyLevels);
 
-        // Prepare the response
+        
         let solvedCount = 0;
         if (solvedElements.length > 0) {
             const text = solvedElements[1];
@@ -75,6 +75,4 @@ app.get('/:username/solved', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+module.exports = geekrouter;

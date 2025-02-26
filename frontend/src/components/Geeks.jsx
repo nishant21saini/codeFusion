@@ -14,7 +14,6 @@ const Geeks = () => {
   const [hoveredSegment, setHoveredSegment] = useState(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
-  // Function to fetch LeetCode data
   const fetchSolvedQuestionsGeeks = async () => {
     if (!username.trim()) {
       setError("Username cannot be empty.");
@@ -25,7 +24,7 @@ const Geeks = () => {
     setError(""); 
 
     try {
-      const response = await axios.get(`http://localhost:5001/${username}/solved`);
+      const response = await axios.get(`http://localhost:5009/gfg/${username}/solved`);
       setSolvedProblems({ easy : response.data.difficultyLevels[2].count,
         medium: response.data.difficultyLevels[3].count,
         hard: response.data.difficultyLevels[4].count
@@ -134,10 +133,9 @@ const Geeks = () => {
           </button>
         </div>
 
-        {/* Error Message */}
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
-        {/* Canvas Chart */}
+      
         <div className="relative flex justify-center items-center mb-4">
           <canvas
             ref={canvasRef}
@@ -160,7 +158,6 @@ const Geeks = () => {
           )}
         </div>
 
-        {/* Problem Stats */}
         <div className="space-y-2">
           <div className="bg-green-100 p-3 rounded-lg shadow-md">
             <span className="text-sm text-green-900">Easy</span>

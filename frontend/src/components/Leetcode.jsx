@@ -14,7 +14,7 @@ const LeetCodeCard = () => {
   const [hoveredSegment, setHoveredSegment] = useState(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
-  // Function to fetch LeetCode data
+
   const fetchSolvedQuestionsLeetcode = async () => {
     if (!username.trim()) {
       setError("Username cannot be empty.");
@@ -25,7 +25,7 @@ const LeetCodeCard = () => {
     setError(""); 
 
     try {
-      const response = await axios.get(`http://localhost:5005/${username}/solved`);
+      const response = await axios.get(`http://localhost:5009/leetcode/${username}/solved`);
       setSolvedProblems(response.data);
     } catch (err) {
       console.error(err);

@@ -1,18 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaGoogle, FaFacebook, FaApple } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
+
+const REACT_APP_API_URL="http://localhost:5009"
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
+  const [username, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your authentication logic here
-    console.log("Email:", email, "Password:", password);
-    navigate("/dashboard"); // Redirect after successful login
+    try {
+      const API_URL = REACT_APP_API_URL;
+      const response = await axios.post(`${API_URL}/authentication/signin`, {
+        username,
+        password,
+      });
+  
+     // console.log("Response:", response.data); 
+  
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token); 
+        localStorage.setItem("firstname", response.data.firstName); 
+        navigate("/");
+      } else {
+        console.error("Token not found in response");
+      }
+    } catch (error) {
+      console.error("Signin failed:", error.response?.data || error.message);
+    }
   };
+  useEffect(() =>{
+    const userToken = localStorage.getItem("token");
+    if(userToken) navigate('/');
+  },[]);
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
@@ -26,7 +50,7 @@ const SignIn = () => {
             <input
               type="email"
               id="email"
-              value={email}
+              value={username}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
@@ -52,20 +76,7 @@ const SignIn = () => {
           </button>
         </form>
 
-        <div className="text-center my-6">
-          <p className="text-gray-600">Or sign in with</p>
-          <div className="flex justify-center space-x-4 mt-4">
-            <button className="p-3 bg-gray-100 rounded-full text-red-600 hover:bg-gray-200 focus:outline-none">
-              <FaGoogle size={20} />
-            </button>
-            <button className="p-3 bg-blue-600 rounded-full text-white hover:bg-blue-700 focus:outline-none">
-              <FaFacebook size={20} />
-            </button>
-            <button className="p-3 bg-black rounded-full text-white hover:bg-gray-800 focus:outline-none">
-              <FaApple size={20} />
-            </button>
-          </div>
-        </div>
+      
 
         <div className="text-center mt-6">
           <p className="text-sm text-gray-600">

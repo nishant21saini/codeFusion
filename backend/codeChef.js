@@ -1,12 +1,13 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
-
-const port = process.env.PORT || 5002;
 const cors = require('cors'); 
 const app = express();
+const chefrouter = express.Router();
 app.use(cors()); 
 
-app.get('/:username/solved', async (req, res) => {
+///nishant/solved	{ username: "nishant" }
+//this is known as dynamic routing 
+chefrouter.get('/:username/solved', async (req, res) => {
     const { username } = req.params;
     console.log({username});
 
@@ -63,6 +64,4 @@ app.get('/:username/solved', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+module.exports = chefrouter;

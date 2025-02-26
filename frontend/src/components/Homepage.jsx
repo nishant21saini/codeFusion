@@ -1,11 +1,10 @@
 import React from "react";
-import image from '../images/leet.png';
 import FeatureCard from "./FeatureCard";
 
 const Homepage = () => {
     return (
         <div className="w-full min-h-screen bg-black text-white">
-            {/* Hero Section */}
+           
             <section
                 className="relative h-[500px] bg-cover bg-center flex items-center justify-center text-center"
                 style={{ backgroundImage: `url('https://source.unsplash.com/1600x900/?coding,technology')` }}
@@ -23,7 +22,6 @@ const Homepage = () => {
                         <img className="h-12 w-15" src="https://cdn.codechef.com/images/cc-logo.svg" alt="CodeChef"></img>
                     </div>
                 </div>
-
             </section>
 
             {/* Features Section */}
@@ -31,19 +29,16 @@ const Homepage = () => {
                 <h2 className="text-3xl font-bold text-center mb-8 text-white">What Our Platform Can Do</h2>
                 <div className="grid md:grid-cols-3 gap-6">
                     <FeatureCard
-                        image={image}
                         title="Track Your Progress"
-                        description="Monitor solved problems across LeetCode, CodeForces, and more."
+                        description="Monitor solved problems across LeetCode, GeeksForGeeks, and more."
                     />
 
                     <FeatureCard
-                        image="https://source.unsplash.com/300x200/?coding,developer"
                         title="Analyze Performance"
                         description="Detailed insights into your strengths and weaknesses."
                     />
 
                     <FeatureCard
-                        image="https://source.unsplash.com/300x200/?community,teamwork"
                         title="Compete & Collaborate"
                         description="Compare your stats with friends & improve together."
                     />
@@ -54,15 +49,9 @@ const Homepage = () => {
             <section className="text-center py-10 bg-orange-400 text-black">
                 <h2 className="text-3xl font-bold">Start Tracking Today!</h2>
                 <p className="mt-2">Join now and take control of your coding journey.</p>
-                <button className="mt-4 px-6 py-2 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-200 transition duration-300">
-                    Get Started
-                </button>
             </section>
         </div>
     );
 };
 
-
-
 export default Homepage;
-
