@@ -17,6 +17,7 @@ leetrouter.get('/:username/solved', async (req, res) => {
     try {
         
         browser = await puppeteer.launch({
+            executablePath: '/usr/bin/google-chrome',
             headless: true,
             args: [
                 '--no-sandbox',
