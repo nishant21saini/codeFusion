@@ -18,6 +18,7 @@ chefrouter.get('/:username/solved', async (req, res) => {
     let browser;
     try {
         browser = await puppeteer.launch({
+            executablePath: '/usr/bin/google-chrome',
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
             
