@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const REACT_APP_API_URL = "http://localhost:5009";
+
 
 const Signup = () => {
   const [username, setEmail] = useState("");
@@ -18,6 +18,7 @@ const Signup = () => {
     e.preventDefault(); // Prevent default form submission
 
     try {
+      const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
       const response = await axios.post(`${REACT_APP_API_URL}/authentication/signup`, {
         username,
         password,

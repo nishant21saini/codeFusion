@@ -3,7 +3,7 @@ import { FaGoogle, FaFacebook, FaApple } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
-const REACT_APP_API_URL="http://localhost:5009"
+
 
 const SignIn = () => {
   const [username, setEmail] = useState("");
@@ -14,13 +14,16 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const API_URL = REACT_APP_API_URL;
+      const API_URL = import.meta.env.VITE_API_URL;
+      
+     console.log("API URL:", API_URL);
+  
       const response = await axios.post(`${API_URL}/authentication/signin`, {
         username,
         password,
       });
   
-     // console.log("Response:", response.data); 
+     console.log("Response:", response.data); 
   
       if (response.data.token) {
         localStorage.setItem("token", response.data.token); 

@@ -32,7 +32,9 @@ const Event = () => {
     useEffect(() => {
         const fetchContestData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5009/event/tracker`);
+                const API_URL = import.meta.env.VITE_API_URL;
+                console.log(API_URL);
+                const response = await axios.get(`${API_URL}/event/tracker`);
                 console.log("API Response:", response.data);
                 if (Array.isArray(response.data)) {
                     setContestData(response.data);

@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const mongoose = require('mongoose');
 const mainRouter = require('./user');
@@ -9,6 +10,7 @@ const chefrouter = require('./codeChef')
 const leetEvent = require('./eventTracker/leetEvent')
 const cookieParser = require('cookie-parser')
 require('./database/db.js')
+
 
 
 app.use(cookieParser());
@@ -23,6 +25,7 @@ app.use('/codechef',chefrouter);
 
 const connectDB = async () => {
   try {
+    console.log(process.env.MONGODB)
     await mongoose.connect(process.env.MONGODB);
     console.log('Database is connected successfully!');
 

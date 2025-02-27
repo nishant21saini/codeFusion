@@ -24,7 +24,7 @@ const Geeks = () => {
     setError(""); 
 
     try {
-      const response = await axios.get(`http://localhost:5009/gfg/${username}/solved`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/gfg/${username}/solved`);
       setSolvedProblems({ easy : response.data.difficultyLevels[2].count,
         medium: response.data.difficultyLevels[3].count,
         hard: response.data.difficultyLevels[4].count

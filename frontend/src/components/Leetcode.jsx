@@ -25,7 +25,11 @@ const LeetCodeCard = () => {
     setError(""); 
 
     try {
-      const response = await axios.get(`http://localhost:5009/leetcode/${username}/solved`);
+      const API_URL = import.meta.env.VITE_API_URL;
+      console.log("API" ,API_URL);
+      console.log("Fetching from:", `${API_URL}/leetcode/${username}/solved`);
+
+      const response = await axios.get(`${API_URL}/leetcode/${username}/solved`);
       setSolvedProblems(response.data);
     } catch (err) {
       console.error(err);
