@@ -11,6 +11,7 @@ leetEvent.get('/tracker' , async (req,res) => {
     console.log("fetching Event data ...");
 
     const browser = await puppeteer.launch({
+        executablePath: '/usr/bin/google-chrome',
         headless: true,
         args: [
             '--no-sandbox',
