@@ -23,7 +23,7 @@ app.use('/codechef',chefrouter);
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://nishant_21:nishant_21@cluster0.kpmqyrr.mongodb.net/');
+    await mongoose.connect(process.env.MONGODB);
     console.log('Database is connected successfully!');
 
   } catch (err) {
