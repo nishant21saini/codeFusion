@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const express = require('express')
 const zod = require('zod')
 const User = require('./database/db.js');
