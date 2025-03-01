@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaGoogle, FaFacebook, FaApple } from "react-icons/fa";
+
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
